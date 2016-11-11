@@ -3,22 +3,42 @@ package witten.Client;
 import javax.swing.*;
 import java.awt.*;
 
-public class PongClient extends JFrame{
+public class PongClient{
+
+    public static PongClient client;
+
+    Renderer render;
+
+    boolean gameRunning, lobbyRunning;
+
+    Paddle topP;
+    Paddle leftP;
+    Paddle rightP;
+    Paddle bottomP;
+
+    Ball ball;
 
     PongClient()
     {
-        super("Pong Game 4 Friends");
-        setSize(1000,1000);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        getContentPane().setBackground(new Color(0, 0, 0));
+        render = new Renderer();
+
+        JFrame frame = new JFrame("Pong 4 Friends");
+        frame.setSize(1000,1000);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(render);
+        frame.getContentPane().setBackground(new Color(0, 0, 0));
+
+        frame.setVisible(true);
+
+        topP = new Paddle(0);
     }
 
-    public void setFPS()
+    public void update()
     {
 
     }
 
-    public void renderGame()
+    public void render()
     {
 
     }
@@ -30,12 +50,18 @@ public class PongClient extends JFrame{
 
     public void inGame()
     {
+        while(gameRunning)
+        {
+
+
+            update();
+            render.repaint();
+        }
 
     }
 
     public static void main(String[] args) {
 
-        PongClient game = new PongClient();
-        game.setVisible(true);
+        client = new PongClient();
     }
 }

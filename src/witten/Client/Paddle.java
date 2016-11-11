@@ -9,9 +9,11 @@ public class Paddle {
     int newPosX;
     int newPosY;
 
-    Paddle()
-    {
+    int orientation;
 
+    Paddle(int orientation)
+    {
+        this.orientation = orientation;
     }
 
     public void moveInterpolate()
